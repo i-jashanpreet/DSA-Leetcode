@@ -1,8 +1,6 @@
 class Solution:
     def answerQueries(self, nums, queries):
         nums.sort()
-
-        # build prefix sum
         prefix = []
         total = 0
         for x in nums:
