@@ -2,34 +2,30 @@ class Solution:
     def maxDistance(self, position, m):
         position.sort()
 
-        # Check if we can place m balls with minimum distance 'dist'
         def canPlace(dist):
             count = 1
             last = position[0]
 
-            for i in range(1, len(position)):
-                if position[i] - last >= dist:
+            for pos in position[1:]:
+                if pos - last >= dist:
                     count += 1
-                    last = position[i]
-                if count == m:
-                    return True
-
+                    last = pos
+                    if count == m:
+                        return True
             return False
 
-        start = 1
-        end = position[-1] - position[0]
-        ans = 0
+        left = 1
+        right = position[-1] - position[0]
 
-        while start <= end:
-            mid = (start + end) // 2
+        while left < right:
+            mid = (left + right + 1) // 2  # bias to the right
 
             if canPlace(mid):
-                ans = mid
-                start = mid + 1   # try bigger distance
+                left = mid       # try bigger distance
             else:
-                end = mid - 1     # try smaller distance
+                right = mid - 1  # reduce distance
 
-        return ans
+        return left
 
 
         
