@@ -6,13 +6,21 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        temp = head
-        my_set = set()
-        while temp != None:
-            if temp in my_set:
+        # temp = head
+        # my_set = set()
+        # while temp != None:
+        #     if temp in my_set:
+        #         return True
+        #     my_set.add(temp)
+        #     temp = temp.next
+        # return False
+        slow = head
+        fast = head
+        while fast!=None and fast.next!=None:
+            slow = slow.next
+            fast = fast.next.next
+            if slow==fast:
                 return True
-            my_set.add(temp)
-            temp = temp.next
         return False
 
         
