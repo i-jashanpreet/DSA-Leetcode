@@ -11,27 +11,19 @@
 
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        count = 0
         temp = head
+        prev = None
+        c=0
         while temp:
-            count += 1
             temp = temp.next
-        curr = head
-        prevGroupTail = None
-        newHead = head
-        while count >= k:
-            prev = None
-            tail = curr   
-            for i in range(k):
-                front = curr.next
-                curr.next = prev
-                prev = curr
-                curr = front
-            if prevGroupTail == None:
-                newHead = prev
-            else:
-                prevGroupTail.next = prev
-            tail.next = curr
-            prevGroupTail = tail
-            count -= k
-        return newHead
+            c+=1
+        if c < k:
+            return head 
+        temp = head
+        for i in range(k):
+            front = temp.next
+            temp.next = prev
+            prev = temp
+            temp = front
+        head.next = self.reverseKGroup(temp,k)
+        return prev
