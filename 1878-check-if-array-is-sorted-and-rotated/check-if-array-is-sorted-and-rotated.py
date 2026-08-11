@@ -5,8 +5,6 @@ class Solution:
         for i in range(n-1):
             if nums[i]>nums[i+1]:
                 c+=1
-            else:
-                continue
         if nums[-1]>nums[0]:
             c+=1
         if c>1:
