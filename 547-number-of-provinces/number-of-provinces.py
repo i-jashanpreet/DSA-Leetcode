@@ -8,16 +8,14 @@ class Solution:
                     adj[i].append(j)
                     adj[j].append(i)
         vis = [False]*n
-        ans = []
-        def f(node,comp):
+        ans = 0
+        def f(node):
             vis[node]=True
-            comp.append(node)
             for neigh in adj[node]:
                 if vis[neigh]==False:
-                    f(neigh,comp)
+                    f(neigh)
         for node in range(n):
             if vis[node]==False:
-                comp =[]
-                f(node,comp)
-                ans.append(comp)
-        return len(ans)
+                ans+=1
+                f(node)
+        return ans
