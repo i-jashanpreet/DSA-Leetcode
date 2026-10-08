@@ -11,8 +11,4 @@ class Solution:
                 stack.pop()
                 if stack:
                     res+=i
-        return res
-
-
-
-        
+        return res       
