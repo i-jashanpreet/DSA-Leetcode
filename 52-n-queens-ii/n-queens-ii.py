@@ -24,12 +24,11 @@ class Solution:
                 i-=1
                 j+=1
             return True
+        c = 0
         def f(row):
-            temp =[]
+            nonlocal c
             if row==n:
-                for eachr in bord:
-                    temp.append("".join(eachr))
-                ans.append(temp)
+                c+=1
                 return
             for col in range(n):
                 if safe(row,col):
@@ -37,4 +36,4 @@ class Solution:
                     f(row+1)
                     bord[row][col] = "."
         f(0)
-        return len(ans)        
+        return c        
