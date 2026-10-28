@@ -3,9 +3,9 @@ class Solution:
         freq = {}
         for i in s:
             freq[i] = freq.get(i, 0) + 1
-        s = sorted(freq, key=lambda x: freq[x], reverse=True)
+        j = sorted(freq, key=lambda x: freq[x], reverse=True)
         ans = ""
-        for i in s:
+        for i in j:
             ans += i * freq[i]
         return ans
         
